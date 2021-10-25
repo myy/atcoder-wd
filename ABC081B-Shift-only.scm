@@ -26,3 +26,18 @@
 
 
 (print (mydiv (pracD) 0))
+
+
+;; 別の解き方
+(define myread
+  (lambda (n) ;; 読み込みたいものの数．最初に入力される場合は引数を(read)にすればよろし
+    (cond ((zero? n) ())
+          (else (cons (read) (myread (- n 1)))))
+    ))
+(define myfunc
+  (lambda (lis n)
+        (if (= (length lis) (length (filter even? lis))) ;; もとのリストの長さと，偶数だけを取り出したリストの長さを比較する
+            (myfunc (map (lambda (x) (quotient x 2)) lis) (+ n 1))
+            n
+    )))
+(print (myfunc (myread (read)) 0))
