@@ -16,3 +16,18 @@
     ))
 
 (print (myread))
+
+;; 別の書き方
+(define a (read))
+(define b (read))
+(define c (read))
+(define x (read))
+
+(let ((count 0))
+    (dotimes (i (+ a 1))
+             (dotimes (j (+ b 1)) 
+                      (dotimes (k (+ c 1))
+                              (if (= (+ (* 500 i) (* 100 j) (* 50 k)) x) (set! count (+ count 1)))
+                              )))
+  (print count))
+;; 多重ループで総当りで解けそうなら，dotimes使うほうがぜんぜんいいかも
